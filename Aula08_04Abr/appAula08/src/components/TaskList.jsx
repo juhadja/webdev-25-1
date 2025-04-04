@@ -1,23 +1,21 @@
-import { Icon } from "@iconify/react/dist/iconify.js"
+import AddTaskBox from "./AddTaskBox";
 import TaskListItem from "./TaskListItem"
 import { useState } from "react"
 
 export default function TaskList() {
     const [ tasks, setTasks ] = useState([ "Uma tarefa legal", "Ir na feira", "Estudar React", "Programar mais" ])
 
-    function addTask() {
-        console.log("addTask");
-        setTasks([...tasks, "Alguma coisa"])
+    function addTask(taskName) {
+        console.log("addTask",taskName);
+        setTasks([...tasks, taskName])
     }
 
     return (
         <>
+            <AddTaskBox onAddTaskName={addTask}/>
             <div className="border border-black p-2 m-2 rounded md:w-120">
                 <div>
                     Lista de tarefas: 
-                    <button onClick={addTask} className="border border-black px-2">
-                        Add
-                    </button>
                 </div>
                 <hr className="my-2" />
                 <div>
